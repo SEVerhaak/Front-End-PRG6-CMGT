@@ -8,11 +8,9 @@ function Speakers() {
     const [pagination, setPagination] = useState({});
     const [loading, setLoading] = useState(true);
 
-    // Extract page and limit from search params
     const page = parseInt(searchParams.get('page')) || 1;
     const limit = parseInt(searchParams.get('limit')) || 10;
 
-    // Set the available options for the number of items per page
     const pageSizeOptions = [5, 10, 20, 50];
 
     useEffect(() => {

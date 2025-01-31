@@ -1,5 +1,5 @@
-import { useParams, useNavigate } from "react-router"; // useNavigate added
-import { useEffect, useState } from "react";
+import {useParams, useNavigate, redirect} from "react-router"; // useNavigate added
+import {useEffect, useState} from "react";
 
 function SpeakersDetail_OLD() {
     const params = useParams();
@@ -15,19 +15,20 @@ function SpeakersDetail_OLD() {
         async function fetchDetails() {
             try {
                 const incrementView = await fetch(`http://145.24.223.19:8001/speakers/${id}`, {
-                    headers: { 'Accept': 'application/json' },
+                    headers: {'Accept': 'application/json'},
                     method: 'PATCH'
                 })
 
                 const response = await fetch(`http://145.24.223.19:8001/speakers/${id}`, {
-                    headers: { 'Accept': 'application/json' }
+                    headers: {'Accept': 'application/json'}
                 });
                 const data = await response.json();
-                setDetails(data);
 
+                setDetails(data);
 
             } catch (error) {
                 setError(error.message);
+
             } finally {
                 setLoading(false);
             }
@@ -40,7 +41,7 @@ function SpeakersDetail_OLD() {
         try {
             const response = await fetch(`http://145.24.223.19:8001/speakers/${id}`, {
                 method: "DELETE",
-                headers: { 'Accept': 'application/json' }
+                headers: {'Accept': 'application/json'}
             });
 
             if (!response.ok) {
